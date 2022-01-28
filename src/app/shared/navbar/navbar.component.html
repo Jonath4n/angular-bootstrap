@@ -1,29 +1,62 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="header">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="header">
   <div class="container">
       <a href="#" style="color: white;">
           <img src="../../../assets/images/platzi-logo.png" alt="logo">&nbsp; Conf Hawaii
       </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">La conferencia</a>
+          <a class="nav-link active" aria-current="page" href="#main">La conferencia</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Los oradores</a>
+          <a class="nav-link" href="#speakers">Los oradores</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">El lugar y fecha</a>
+          <a class="nav-link" href="#schedulesection">El lugar y fecha</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Conviertete en orador</a>
+          <a class="nav-link" href="#dopresenter">Conviertete en orador</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-platzi" href="#">Compra de tickets</a>
+          <a class="nav-link text-platzi" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Compra de tickets</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Comprar tickets</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <div class="input-group flex-nowrap">
+              <span class="input-group-text" id="addon-wrapping">@</span>
+              <input type="text" #username class="form-control" placeholder="Ingrese su nombre" aria-label="Nombre de usuario" aria-describedby="addon-wrapping">
+            </div>
+          </div>
+        </form>
+        <!-- Alert Message -->
+        <div *ngIf="showAlertOk" class="alert alert-success" role="alert">
+          ¡Te contactaremos si eres el ganador del sorteo!
+        </div>
+        <div *ngIf="showAlertNok" class="alert alert-danger" role="alert">
+          Verifica la información de nuevo por favor
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-platzi" (click)="sendMail( username.value )">Comprar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,5 +9,19 @@ export class NavbarComponent {
 
   constructor() { }
 
+  public showAlertOk: boolean = false;
+  public showAlertNok: boolean = false;
+
+  sendMail(mail: string){
+
+    if(mail.length == 0){
+      this.showAlertNok = true;
+      this.showAlertOk = false;
+    }else{
+      this.showAlertNok = false;
+      this.showAlertOk = true;
+    }
+  }
+  
 
 }
